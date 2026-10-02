@@ -1,0 +1,21 @@
+---
+import { platformLabels, type SocialPost } from "@/data/social";
+
+interface Props {
+  post: SocialPost;
+}
+
+const { post } = Astro.props;
+---
+
+<a class="social-post" href={post.href} target="_blank" rel="noopener noreferrer">
+  <div class="social-post-meta">
+    <span>{platformLabels[post.platform]}</span>
+    <time datetime={post.date}>
+      {new Date(post.date).toLocaleDateString("en-IN", { day: "numeric", month: "short" })}
+    </time>
+  </div>
+  <h3>{post.title}</h3>
+  {post.excerpt && <p>{post.excerpt}</p>}
+  <span class="external-arrow">↗</span>
+</a>

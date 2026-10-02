@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://veermakesthings.com/sitemap-index.xml

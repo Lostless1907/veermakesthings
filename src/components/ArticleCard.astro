@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  date?: Date;
+  type?: string;
+}
+
+const { title, description, href, date, type } = Astro.props;
+---
+
+<a class="article-card" href={href}>
+  <div class="article-card-meta">
+    <span>{type ?? "writing"}</span>
+    {date && <time datetime={date.toISOString()}>{date.toLocaleDateString("en-IN", { month: "short", year: "numeric" })}</time>}
+  </div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+  <span class="read-more">Read →</span>
+</a>

@@ -1,0 +1,40 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  tags?: string[];
+  type?: string;
+}
+
+const { title, description, date, tags = [], type } = Astro.props;
+---
+
+<BaseLayout title={`${title} — Veer Makes Things`} description={description}>
+  <article class="article">
+    <header class="article-header">
+      <div class="eyebrow">
+        {type ?? "writing"} · {date.toLocaleDateString("en-IN", {
+          year: "numeric",
+          month: "long",
+          day: "numeric"
+        })}
+      </div>
+
+      <h1>{title}</h1>
+      <p class="lede">{description}</p>
+
+      {tags.length > 0 && (
+        <div class="tags" aria-label="Tags">
+          {tags.map((tag) => <span>#{tag}</span>)}
+        </div>
+      )}
+    </header>
+
+    <div class="article-body">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

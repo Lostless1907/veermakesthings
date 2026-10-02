@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+
+const entries = await getCollection("work");
+---
+
+<BaseLayout title="Work — Veer Makes Things" description="Research, software, Breathe, and other things Veer is making.">
+  <section class="page-intro">
+    <span class="eyebrow">Work</span>
+    <h1>Things I am making, researching, or otherwise causing to exist.</h1>
+    <p>Projects are documented as they actually evolve: ideas, experiments, failures, results, and links.</p>
+  </section>
+
+  <div class="project-grid">
+    {entries.map((entry) => (
+      <ProjectCard
+        title={entry.data.title}
+        description={entry.data.description}
+        href={`/work/${entry.id}/`}
+        status={entry.data.status}
+      />
+    ))}
+  </div>
+</BaseLayout>

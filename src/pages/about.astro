@@ -1,0 +1,68 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { site } from "@/data/site";
+---
+
+<BaseLayout title="About — Veer Makes Things" description="About Veer and the ideas behind Veer Makes Things.">
+  <section class="page-intro about-intro">
+    <span class="eyebrow">About</span>
+    <h1>I'm Veer.</h1>
+
+    <div class="prose">
+      <p>
+        I like mathematics, computer science, research, writing, and making things
+        that did not exist before.
+      </p>
+
+      <p>
+        Most of my time is spent somewhere between proving things, programming things,
+        reading things, and wondering why I decided to do all four simultaneously.
+      </p>
+
+      <p>
+        This website is my permanent corner of the internet: part archive, part workshop,
+        part notebook, and part place to put things I think are worth sharing.
+      </p>
+    </div>
+  </section>
+
+  <section class="about-grid">
+    <div>
+      <span class="eyebrow">Interested in</span>
+      <ul class="plain-list">
+        <li>Mathematics</li>
+        <li>Computer science</li>
+        <li>Research</li>
+        <li>Open source</li>
+        <li>Environmental technology</li>
+        <li>Writing</li>
+        <li>Learning</li>
+      </ul>
+    </div>
+
+    <div>
+      <span class="eyebrow">Elsewhere</span>
+      <ul class="plain-list">
+        <li><a href={site.social.github}>GitHub ↗</a></li>
+        <li><a href={site.social.x}>X ↗</a></li>
+        <li><a href={site.social.instagram}>Instagram ↗</a></li>
+        <li><a href={site.social.linkedin}>LinkedIn ↗</a></li>
+        <li><a href={site.social.reddit}>Reddit ↗</a></li>
+        <li><a href={site.social.substack}>Substack ↗</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section compact-section">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">Contact</span>
+        <h2>Say hello.</h2>
+      </div>
+    </div>
+    <p class="contact-line">
+      <a class="email-link" href={`mailto:${site.email}`}>{site.email}</a>
+    </p>
+    <p class="muted">A proper contact form can be added once you decide where you want messages delivered.</p>
+  </section>
+</BaseLayout>

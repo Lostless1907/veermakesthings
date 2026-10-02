@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import NoteCard from "@/components/NoteCard.astro";
+
+const entries = (await getCollection("notes"))
+  .filter((entry) => !entry.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title="Notes — Veer Makes Things" description="Short thoughts, observations, reading notes, and unfinished ideas.">
+  <section class="page-intro">
+    <span class="eyebrow">Notes</span>
+    <h1>Small thoughts, before they become essays.</h1>
+    <p>Not everything needs to become a 4,000-word document.</p>
+  </section>
+
+  <div class="note-list note-list-large">
+    {entries.map((entry) => (
+      <NoteCard
+        title={entry.data.title}
+        href={`/notes/${entry.id}/`}
+        date={entry.data.pubDate}
+      />
+    ))}
+  </div>
+</BaseLayout>

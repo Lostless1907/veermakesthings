@@ -1,0 +1,20 @@
+---
+import SocialPost from "./SocialPost.astro";
+import { socialPosts } from "@/data/social";
+
+const posts = socialPosts.slice(0, 5);
+---
+
+<section class="section">
+  <div class="section-heading">
+    <div>
+      <span class="eyebrow">Elsewhere</span>
+      <h2>Around the workshop</h2>
+    </div>
+    <span class="section-note">the internet, lightly aggregated</span>
+  </div>
+
+  <div class="social-feed">
+    {posts.map((post) => <SocialPost post={post} />)}
+  </div>
+</section>

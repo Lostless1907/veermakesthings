@@ -1,0 +1,32 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  status?: string;
+  tags?: string[];
+}
+
+const { title, description, status = "active", tags = [] } = Astro.props;
+---
+
+<BaseLayout title={`${title} — Veer Makes Things`} description={description}>
+  <article class="article">
+    <header class="article-header">
+      <div class="eyebrow">{status}</div>
+      <h1>{title}</h1>
+      <p class="lede">{description}</p>
+
+      {tags.length > 0 && (
+        <div class="tags">
+          {tags.map((tag) => <span>#{tag}</span>)}
+        </div>
+      )}
+    </header>
+
+    <div class="article-body">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

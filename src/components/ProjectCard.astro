@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  status?: string;
+}
+
+const { title, description, href, status = "active" } = Astro.props;
+---
+
+<a class="project-card" href={href}>
+  <div class="project-card-top">
+    <span>{status}</span>
+    <span>↗</span>
+  </div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+</a>
